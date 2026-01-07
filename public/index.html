@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet G-Deux | Tracking Navire</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Style spécifique pour la carte dans le HTML si besoin */
+        #map { height: 450px; width: 100%; margin-top: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+        .separator { display: flex; align-items: center; text-align: center; margin: 20px 0; }
+        .separator::before, .separator::after { content: ''; flex: 1; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        .separator:not(:empty)::before { margin-right: .5em; }
+        .separator:not(:empty)::after { margin-left: .5em; }
+    </style>
+</head>
+
+<body>
+    <div class="login-container" id="login-section">
+        <h2>Gestion de la Flotte</h2>
+        
+        <div id="register-box">
+            <h3 style="font-size: 1.1rem; opacity: 0.8;">Nouvel Utilisateur</h3>
+            <input type="text" id="reg-prenom" placeholder="Prénom">
+            <input type="text" id="reg-nom" placeholder="Nom">
+            <input type="email" id="reg-email" placeholder="Email (Identifiant)">
+            <input type="password" id="reg-mdp" placeholder="Mot de passe">
+            <button onclick="register()">Créer un compte</button>
+        </div>
+        
+        <div class="separator">OU</div>
+
+        <div id="login-box">
+            <h3 style="font-size: 1.1rem; opacity: 0.8;">Accès Membre</h3>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-mdp" placeholder="Mot de passe">
+            <button onclick="login()">Se connecter</button>
+        </div>
+        
+        <p id="error-msg"></p>
+    </div>
+
+    <div class="dashboard-container" id="dashboard-section" style="display:none;">
+        <div class="dashboard-header">
+            <h2>Bienvenue sur le Dashboard</h2>
+            <p>Session active : <code id="display-token"></code></p>
+        </div>
+
+        <div id="map"></div>
+
+        <button onclick="logout()" style="background: linear-gradient(135deg, #ff4b2b, #ff416c); margin-top: 30px;">
+            Déconnexion
+        </button>
+    </div>
+
+    <div class="credits">
+        <p>Projet réalisé par :</p>
+        <span class="team-names">Ryan Almansa, Sacha et Soulaimane</span>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
